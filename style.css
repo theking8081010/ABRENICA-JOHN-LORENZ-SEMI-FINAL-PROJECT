@@ -1,0 +1,259 @@
+/* ============================================
+   TASK MANAGER - GLASSMORPHISM STYLE
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    /* Ang background image kay gikan sa index.php (random every refresh) */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 30px 15px;
+    position: relative;
+}
+
+/* Dark overlay para mabasa ang text */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(20, 20, 40, 0.55), rgba(40, 20, 60, 0.45));
+    z-index: -1;
+}
+
+.container {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- GLASS CARDS ---------- */
+.card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- FORM ---------- */
+label {
+    display: block;
+    font-weight: 600;
+    margin: 14px 0 6px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    transition: all 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Date picker icon & dropdown contrast */
+input[type="date"]::-webkit-calendar-picker-indicator,
+select {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+select option {
+    color: #222;
+    background: #fff;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-add {
+    margin-top: 18px;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+    transition: all 0.25s ease;
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.55);
+}
+
+.btn-group {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.25s ease;
+}
+
+.btn-cancel:hover { background: rgba(255, 255, 255, 0.3); }
+
+/* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    vertical-align: middle;
+}
+
+th {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tr:last-child td { border-bottom: none; }
+
+tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+tr.completed td:nth-child(2) {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- BADGES & ACTION BUTTONS ---------- */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.badge.pending {
+    background: rgba(243, 156, 18, 0.35);
+    color: #ffd98a;
+}
+
+.badge.completed {
+    background: rgba(46, 204, 113, 0.35);
+    color: #a9f5c8;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 2px 3px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+}
+
+.actions a:hover { transform: translateY(-1px); }
+
+.btn-toggle {
+    background: rgba(46, 134, 222, 0.45);
+    box-shadow: 0 2px 8px rgba(46, 134, 222, 0.3);
+}
+.btn-toggle:hover { background: rgba(46, 134, 222, 0.65); }
+
+.btn-edit {
+    background: rgba(243, 156, 18, 0.45);
+    box-shadow: 0 2px 8px rgba(243, 156, 18, 0.3);
+}
+.btn-edit:hover { background: rgba(243, 156, 18, 0.65); }
+
+.btn-delete {
+    background: rgba(231, 76, 60, 0.45);
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+.btn-delete:hover { background: rgba(231, 76, 60, 0.65); }
+
+.empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    table { font-size: 12px; }
+    th, td { padding: 8px 5px; }
+    h1 { font-size: 1.6rem; }
+}
