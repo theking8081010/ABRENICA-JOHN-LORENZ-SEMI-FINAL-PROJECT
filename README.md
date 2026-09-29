@@ -6,7 +6,8 @@ Usa ka **simple pero limpyo** nga Task Management System nga gama sa **PHP + MyS
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-![Task Manager Screenshot](image.png)
+<img width="1209" height="680" alt="image" src="https://github.com/user-attachments/assets/6a1a0789-9084-44f1-b294-3278c4656335" />
+
 
 ---
 
